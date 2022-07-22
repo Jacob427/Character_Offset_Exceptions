@@ -13,12 +13,18 @@ char character(char start, int offset) {
 		throw invalidCharacterExcpeption;
 	}
 	char result = start + offset;
+
+	if (!isalpha(result)) {	//test for valid range/target
+		char invalidRangeException = 'a';
+		throw invalidRangeException;
+	}
+
 	return result;
 }
 
 int main() {
-	char letter = 'z';
-	int offset = 23;
+	char letter = 'a';
+	int offset = 5;
 	char new_letter;
 
 	try {
@@ -28,5 +34,7 @@ int main() {
 	catch (string invalidCharacterExcpeption) {
 		cout << invalidCharacterExcpeption << endl;
 	}
-
+	catch (char invalidRangeException) {
+		cout << "ERROR: Target out of range!" << endl;
+	}
 }
