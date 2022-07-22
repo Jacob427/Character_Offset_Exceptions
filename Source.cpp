@@ -18,13 +18,18 @@ char character(char start, int offset) {
 		char invalidRangeException = 'a';
 		throw invalidRangeException;
 	}
-
-	return result;
+	if (isupper(start) && isupper(result) || islower(start) && islower(result)) {	//test to prevent upper-lower case transitions
+		return result;
+	}
+	else {
+		char invalidRangeException = 'a';
+		throw invalidRangeException;
+	}
 }
 
 int main() {
-	char letter = 'a';
-	int offset = 5;
+	char letter = 'z';
+	int offset = -5;
 	char new_letter;
 
 	try {
